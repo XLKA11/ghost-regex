@@ -4,7 +4,7 @@
   "description": "Work with regular expressions right inside VS Code — Railroad diagrams, Explain, ReDoS detector, Unit tests, and Preview on real files.",
   "icon": "icon.png",
   "publisher": "ghost-regex",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "MIT",
   "engines": {
     "vscode": "^1.138.0"

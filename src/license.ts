@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 const LICENSE_KEY = 'ghostRegex.licenseKey';
 const PRO_KEY_STORAGE = 'ghostRegex.isPro';
-const LICENSE_URL = 'https://gumroad.com/ghost-regex'; // поменяем потом
+const LICENSE_URL = 'https://boosty.to/ghostregex/purchase/4115716';
 
 /**
  * Проверка формата ключа.
@@ -16,7 +16,7 @@ export function isValidKeyFormat(key: string): boolean {
 /**
  * Локальная проверка контрольной суммы ключа.
  * Пока без сервера: считаем сумму символов и проверяем делимость.
- * В будущем заменим на проверку через API Gumroad.
+  * В будущем заменим на серверную проверку через Cloudflare Workers.
  */
 export function passesChecksum(key: string): boolean {
     const clean = key.trim().toUpperCase().replace(/-/g, '');
