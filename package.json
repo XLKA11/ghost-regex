@@ -1,0 +1,121 @@
+{
+  "name": "ghost-regex",
+  "displayName": "Ghost Regex",
+  "description": "Work with regular expressions right inside VS Code — Railroad diagrams, Explain, ReDoS detector, Unit tests, and Preview on real files.",
+    "icon": "icon.png",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.138.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "regex",
+    "regexp",
+    "regular expression",
+    "railroad",
+    "redos",
+    "explain",
+    "snippets",
+    "preview",
+    "converter",
+    "syntax"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XLKA11/ghost-regex.git"
+  },
+  "bugs": {
+    "url": "https://github.com/XLKA11/ghost-regex/issues"
+  },
+  "homepage": "https://ghost-regex-site.vercel.app",
+  "galleryBanner": {
+    "color": "#0d1117",
+    "theme": "dark"
+  },
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ghost-regex.explain",
+        "title": "Ghost Regex: Объяснить"
+      },
+      {
+        "command": "ghost-regex.explainSelection",
+        "title": "Ghost Regex: Объяснить выделенное"
+      },
+      {
+        "command": "ghost-regex.enterLicense",
+        "title": "Ghost Regex: Ввести лицензию"
+      },
+      {
+        "command": "ghost-regex.showStatus",
+        "title": "Ghost Regex: Показать статус лицензии"
+      },
+      {
+        "command": "ghost-regex.deactivateLicense",
+        "title": "Ghost Regex: Деактивировать лицензию"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "ghost-regex.explainSelection",
+          "when": "editorHasSelection",
+          "group": "ghost-regex@1"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "ghost-regex.explain",
+        "key": "ctrl+alt+r",
+        "mac": "cmd+alt+r"
+      },
+      {
+        "command": "ghost-regex.explainSelection",
+        "key": "ctrl+alt+e",
+        "mac": "cmd+alt+e",
+        "when": "editorHasSelection"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "24.x",
+    "@types/vscode": "^1.138.0",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.0.0",
+    "esbuild": "^0.28.1",
+    "eslint": "^10.5.0",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.1"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  },
+  "dependencies": {
+    "railroad-diagrams": "^1.0.0",
+    "regex-inspector": "^1.0.1"
+  }
+}
